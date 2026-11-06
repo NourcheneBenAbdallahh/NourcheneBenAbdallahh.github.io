@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio de Nourchene Ben Abdallah, ingénieure full-stack à Tunis.">
+<style>body{margin:0;font:14px/1.5 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Nourchene Ben Abdallah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: colonne unique éditoriale, en-tête sobre, sections empilées, bleu Sidi Bou Saïd en accent */
+:root{
+  --bg:#F6F8FB; --surface:#FFFFFF; --fg:#14202E; --muted:#5A6878; --line:#DCE3EC;
+  --accent:#1F5FA8; --accent-soft:#E4EDF8; --todo:#9A5B00; --todo-bg:#FFF4E0;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E151E; --surface:#152030; --fg:#E6ECF3; --muted:#9AA9BA; --line:#26354A;
+  --accent:#6FA6E8; --accent-soft:#1B2C44; --todo:#F2B65E; --todo-bg:#33280F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E151E; --surface:#152030; --fg:#E6ECF3; --muted:#9AA9BA; --line:#26354A;
+  --accent:#6FA6E8; --accent-soft:#1B2C44; --todo:#F2B65E; --todo-bg:#33280F; color-scheme:dark}
+*{box-sizing:border-box} html{scroll-behavior:smooth} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding-block:56px 72px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+a{color:var(--accent)} a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.todo{background:var(--todo-bg);color:var(--todo);font-family:var(--mono);font-size:12px;padding:1px 6px;border-radius:4px}
+
+/* Hero */
+header{display:flex;flex-direction:column;gap:20px}
+header h1{font-size:clamp(40px,8vw,72px);font-weight:700;letter-spacing:-.02em}
+header h1 span{color:var(--accent)}
+.role{font-size:clamp(18px,2.6vw,22px);color:var(--muted);max-width:60ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:500}
+.status{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:var(--accent-soft);color:var(--accent);
+  font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:10px 18px;border-radius:8px;
+  text-decoration:none;border:1px solid var(--accent);cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--accent);color:var(--bg)} .btn.ghost{background:transparent;color:var(--accent)}
+
+section{display:flex;flex-direction:column;gap:24px}
+section>h2{font-size:28px;font-weight:700;display:flex;align-items:baseline;gap:14px}
+section>h2 small{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--muted)}
+p.lead{margin:0;max-width:65ch;color:var(--fg)}
+
+/* Stack */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.stack div{display:flex;flex-direction:column;gap:8px}
+.stack h3{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:14px;padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+
+/* Projets */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.proj h3{font-size:20px;font-weight:700}
+.proj p{margin:0;color:var(--muted);font-size:15px}
+.proj .tags{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.proj .links{display:flex;gap:16px;font-size:14px;font-weight:500;margin-top:auto}
+
+/* Parcours */
+.timeline{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
+.step{position:relative;padding:0 0 28px 24px;display:flex;flex-direction:column;gap:2px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.step.now::before{background:var(--accent)}
+.step .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.step h3{font-size:18px;font-weight:600;font-family:var(--body)}
+.step p{margin:0;color:var(--muted);font-size:15px}
+
+/* Contact */
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.row .label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:90px}
+.row .val{font-weight:500;user-select:all;word-break:break-all}
+.copy{font:500 13px var(--body);padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.btn,.copy{transition:opacity .15s}.btn:hover,.copy:hover{opacity:.85}}
+
+/* Animations */
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  @keyframes draw{from{background-size:0% 4px}to{background-size:100% 4px}}
+  header>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  header>*:nth-child(1){animation-delay:.05s} header>*:nth-child(2){animation-delay:.15s}
+  header>*:nth-child(3){animation-delay:.3s} header>*:nth-child(4){animation-delay:.42s} header>*:nth-child(5){animation-delay:.54s}
+  header h1 span{background:linear-gradient(var(--accent),var(--accent)) left 92%/100% 4px no-repeat;padding-bottom:4px;animation:draw .9s .7s cubic-bezier(.6,0,.2,1) both}
+  .status::before{animation:pulse 2s 1.2s infinite}
+  .proj{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+  .proj:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 28px -14px color-mix(in srgb,var(--accent) 60%,transparent)}
+  .chips span{transition:background .2s,color .2s,border-color .2s,transform .2s}
+  .chips span:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+  .btn{transition:transform .2s,opacity .15s} .btn:hover{transform:translateY(-2px)}
+  .step::before{transition:transform .25s,background .25s} .step:hover::before{transform:scale(1.3);background:var(--accent)}
+  @supports (animation-timeline:view()){
+    section>h2,.proj,.stack>div,.step,.contact{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  }
+}
+
+/* Interactif */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+nav.top .in{max-width:860px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:6px}
+nav.top .logo{font-family:var(--display);font-weight:700;font-size:18px;color:var(--fg);text-decoration:none;margin-right:auto}
+nav.top .logo span{color:var(--accent)}
+nav.top .links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.top .links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:6px;white-space:nowrap;transition:color .2s,background .2s}
+nav.top .links a:hover{color:var(--fg)} nav.top .links a.on{color:var(--accent);background:var(--accent-soft)}
+#theme{border:1px solid var(--line);background:var(--surface);color:var(--fg);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;flex:none}
+@media (max-width:640px){nav.top .links a:not(.keep){display:none}}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--accent);width:0}
+section{scroll-margin-top:72px}
+.typed{color:var(--accent);font-weight:600;font-family:var(--mono);font-size:.92em}
+.typed::after{content:"";display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:520px}
+.stats div{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.stats b{font-family:var(--display);font-size:30px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted)}
+.chips button{font:inherit;font-size:14px;padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.chips button:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.chips button[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.hint{font-size:14px;color:var(--muted);margin:0}
+.filter{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 16px;border-radius:10px;background:var(--accent-soft);color:var(--fg);font-size:15px}
+.filter a,.filter button{font:600 14px var(--body);color:var(--accent);background:none;border:0;cursor:pointer;padding:0;text-decoration:underline}
+.proj{position:relative;overflow:hidden;cursor:pointer}
+.proj::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--x,50%) var(--y,50%),color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%)}
+.proj:hover::after{opacity:1}
+.proj p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.proj.open p{-webkit-line-clamp:unset;display:block}
+.proj .more{align-self:flex-start;font:600 13px var(--body);color:var(--accent);background:none;border:0;padding:0;cursor:pointer;position:relative;z-index:1}
+.proj.dim{opacity:.35;filter:grayscale(.6)} .proj.hit{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.proj{transition:opacity .3s,filter .3s,transform .25s,border-color .25s,box-shadow .25s}
+#top{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--accent);color:var(--bg);font-size:20px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(0,0,0,.4);z-index:15}
+</style>
+
+</head>
+<body>
+<nav class="top"><div class="in">
+  <a class="logo" href="#accueil">N<span>.</span>B<span>.</span>A</a>
+  <div class="links"><a href="#competences">Compétences</a><a href="#experiences">Expériences</a><a href="#projets">Projets</a><a href="#formation">Formation</a><a class="keep" href="#contact">Contact</a></div>
+  <button id="theme" aria-label="Changer de thème">◐</button>
+</div><div class="progress" id="prog"></div></nav>
+
+<div class="wrap">
+  <header id="accueil">
+    <span class="status">Disponible · recherche un poste full-stack à Tunis</span>
+    <h1>Nourchene<br><span>Ben Abdallah</span></h1>
+    <p class="role">Je développe en <span class="typed" id="typed">React</span><br>Ingénieure en informatique, spécialité Technologies du Web et de l'Internet (ESPRIT, 2026). Je conçois et développe des applications web complètes, de l'API jusqu'à l'interface, avec une expérience en intégration d'IA et d'automatisation.</p>
+    <div class="meta"><span><b>Basée à</b> Tunis, Tunisie</span><span><b>Diplôme</b> ESPRIT · juillet 2026</span><span><b>Langues</b> Arabe (natif) · Français B2 · Anglais B2</span></div>
+    <div class="stats"><div><b data-count="4">4</b><span>stages</span></div><div><b data-count="0" id="nTech">30</b><span>technologies</span></div><div><b data-count="3">3</b><span>langues</span></div></div>
+    <div class="cta">
+      <a class="btn primary" href="#contact">Me contacter</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/nourchene-ben-abdallah-425a75248" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <section id="competences">
+    <h2>Compétences</h2>
+    <p class="hint">Clique sur une compétence pour voir les projets où je l'ai utilisée.</p>
+    <div class="stack">
+      <div><h3>Front-end</h3><div class="chips"><button type="button" aria-pressed="false">React</button><button type="button" aria-pressed="false">Next.js</button><button type="button" aria-pressed="false">Angular</button><button type="button" aria-pressed="false">TypeScript</button><button type="button" aria-pressed="false">JavaScript</button></div></div>
+      <div><h3>Back-end</h3><div class="chips"><button type="button" aria-pressed="false">Java / Spring Boot</button><button type="button" aria-pressed="false">JPA</button><button type="button" aria-pressed="false">.NET / C#</button><button type="button" aria-pressed="false">PHP / Laravel</button><button type="button" aria-pressed="false">Symfony</button><button type="button" aria-pressed="false">Node.js</button><button type="button" aria-pressed="false">Python</button><button type="button" aria-pressed="false">API REST</button><button type="button" aria-pressed="false">GraphQL</button><button type="button" aria-pressed="false">JWT</button></div></div>
+      <div><h3>Bases de données</h3><div class="chips"><button type="button" aria-pressed="false">PostgreSQL</button><button type="button" aria-pressed="false">MySQL</button><button type="button" aria-pressed="false">Oracle</button></div></div>
+      <div><h3>DevOps &amp; outils</h3><div class="chips"><button type="button" aria-pressed="false">Docker</button><button type="button" aria-pressed="false">GitHub Actions</button><button type="button" aria-pressed="false">GitLab</button><button type="button" aria-pressed="false">SonarQube</button><button type="button" aria-pressed="false">Swagger</button><button type="button" aria-pressed="false">Jira / Scrum</button><button type="button" aria-pressed="false">Linux / Bash</button><button type="button" aria-pressed="false">Nginx</button></div></div>
+      <div><h3>IA &amp; automatisation</h3><div class="chips"><button type="button" aria-pressed="false">API OpenAI</button><button type="button" aria-pressed="false">n8n</button><button type="button" aria-pressed="false">Webhooks</button><button type="button" aria-pressed="false">GitHub Copilot</button><button type="button" aria-pressed="false">Cursor</button></div></div>
+    </div>
+    <div class="filter" id="filter" hidden></div>
+  </section>
+
+  <section id="experiences">
+    <h2>Expériences <small>stages</small></h2>
+    <div class="projects">
+      <article class="proj" data-tech="Next.js|React|JavaScript|TypeScript|PHP / Laravel|GraphQL|Python|API REST|n8n|API OpenAI|Webhooks|Docker|GitHub Actions|Jira / Scrum">
+        <span class="tags">Next.js · Laravel / GraphQL · Python · n8n · OpenAI</span>
+        <h3>Système de gestion des emballages</h3>
+        <p><b>Office du Commerce de Tunisie</b> · projet de fin d'études (2025–2026). Application web centralisée qui assure la traçabilité complète du cycle des emballages logistiques et le contrôle des flux de stock par dépôt, en remplacement de fichiers Excel. Microservice Python d'IA prédictive, un assistant OpenAI, des automatisations n8n et un pipeline CI/CD (GitHub Actions, Docker), sur 5 sprints Scrum.</p>
+        <button class="more" type="button">Lire plus</button>
+      </article>
+      <article class="proj" data-tech="React|JavaScript|Node.js|MySQL|API REST|JWT">
+        <span class="tags">React · Node.js · MySQL</span>
+        <h3>LeaderVoIP, application de centre d'appel</h3>
+        <p><b>Groupement d'Affaires Tunis (GAT)</b>. Développement de bout en bout d'une application web de centre d'appel : authentification et gestion des agents, gestion des clients et des appels, statistiques. Campagne de tests manuels sur l'application Leader Transport (modules Véhicules et Tournées), suivi des anomalies sur Plane, et module de gestion des réclamations.</p>
+        <button class="more" type="button">Lire plus</button>
+      </article>
+      <article class="proj" data-tech="Angular|TypeScript|JavaScript">
+        <span class="tags">Ionic 6 · Angular 15 · TypeScript · Cordova · Android Studio</span>
+        <h3>Migration de l'application PassRegion</h3>
+        <p><b>Docapost Applicam</b> (groupe La Poste) · projet de fin d'études de licence, février à mai 2023. Pass'Région est une application mobile gratuite (iOS et Android) qui donne aux jeunes de 15 à 25 ans de la région Auvergne-Rhône-Alpes des réductions sur la culture, le sport et les loisirs. J'ai migré l'application d'Ionic 3 / Angular 5 vers Ionic 6 / Angular 15 et refait ses interfaces, en 3 sprints Scrum : inscription en plusieurs étapes, authentification, gestion du profil et du mot de passe, QR code personnel, liste et détail des avantages, bons plans filtrables par thème (manuels scolaires, sport, cinéma, festivals, spectacles…) et participation à un bon plan.</p>
+        <button class="more" type="button">Lire plus</button>
+      </article>
+      <article class="proj" data-tech="React|JavaScript|Node.js">
+        <span class="tags">React · Node.js · Express.js · MongoDB · Scrum</span>
+        <h3>Module de gestion des tâches</h3>
+        <p><b>Cytekia</b> · 2022–2023. Module de gestion des tâches d'une plateforme de gouvernance de la cybersécurité (GRC). Le chef de projet et les membres ajoutent, modifient, consultent et suppriment les tâches de chaque projet. Chaque membre consulte la liste des tâches qui lui sont assignées et met à jour leur état. Réalisé en sprint Scrum, avec une architecture MVC.</p>
+        <button class="more" type="button">Lire plus</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="projets">
+    <h2>Projets universitaires <small>ESPRIT</small></h2>
+    <div class="projects">
+      <article class="proj" data-tech="React|JavaScript|Node.js|API REST|Docker|SonarQube">
+        <span class="tags">React · Zustand · Express.js · MongoDB · Docker · Jest · Jenkins · SonarQube</span>
+        <h3>TheMenuFy</h3>
+        <p>Application web SaaS de gestion de restaurant, réalisée en équipe de 5. Gestion intelligente des stocks, des fournisseurs et des factures, suivi en temps réel des prix et de la consommation des ingrédients, prévision de la demande par IA, suivi du gaspillage et authentification par reconnaissance faciale.</p>
+        <button class="more" type="button">Lire plus</button>
+      </article>
+      <article class="proj" data-tech="PHP / Laravel|JavaScript|Python|GitHub Actions">
+        <span class="tags">Laravel · Livewire · Vite · Service IA · PHPUnit · GitHub Actions</span>
+        <h3>WasteProduct App</h3>
+        <p>Application web de gestion des déchets développée avec Laravel, avec un service d'IA séparé, des tests PHPUnit et une intégration continue via GitHub Actions.</p>
+        <button class="more" type="button">Lire plus</button>
+        <div class="links"><a href="https://github.com/lolly1259998/wasteProduct-app" target="_blank" rel="noopener">Code sur GitHub</a></div>
+      </article>
+      <article class="proj" data-tech="Angular|TypeScript|Python|API REST">
+        <span class="tags">Angular · Django · API REST · Chart.js</span>
+        <h3>SafeGuard</h3>
+        <p>Projet de groupe : plateforme de supervision de caméras et de centres de contrôle. Front office pour les utilisateurs, back office d'administration, API REST Django et tableau de bord IA avec graphiques.</p>
+        <button class="more" type="button">Lire plus</button>
+        <div class="links"><a href="https://github.com/lolly1259998/SafeGuard" target="_blank" rel="noopener">Code sur GitHub</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="formation">
+    <h2>Formation</h2>
+    <div class="timeline">
+      <div class="step now"><span class="when">2023 – 2026</span><h3>Diplôme d'ingénieur en informatique · ESPRIT, Tunis</h3><p>Spécialité Technologies du Web et de l'Internet (TWIN).</p></div>
+      <div class="step"><span class="when">2020 – 2023</span><h3>Licence en Génie Logiciel · Faculté des Sciences de Tunis</h3><p>Mention Très Bien.</p></div>
+      <div class="step"><span class="when">2020</span><h3>Baccalauréat · Lycée Carthage Dermech</h3></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p class="lead">Ouverte aux postes d'ingénieure full-stack, en CDI, à Tunis ou à distance.</p>
+      <div class="row"><span class="label">E-mail</span><span class="val" id="mail">nourchenebenabdallah3@gmail.com</span><button class="copy" data-target="mail" id="copy-mail">Copier</button></div>
+      <div class="row"><span class="label">Téléphone</span><span class="val" id="tel">+216 21 522 782</span><button class="copy" data-target="tel" id="copy-tel">Copier</button></div>
+      <div class="row"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/nourchene-ben-abdallah-425a75248" target="_blank" rel="noopener">nourchene-ben-abdallah</a></div>
+    </div>
+  </section>
+
+  <footer>© 2026 Nourchene Ben Abdallah · Tunis</footer>
+</div>
+<button id="top" aria-label="Revenir en haut" hidden>↑</button>
+
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target), t=el.textContent.trim();
+  const done=()=>{b.textContent='Copié';setTimeout(()=>b.textContent='Copier',1500)};
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+  try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+}));
+
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* thème */
+const root=document.documentElement;
+document.getElementById('theme').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark';
+});
+/* machine à écrire */
+const words=['React','Spring Boot','Next.js','Laravel','Node.js','Angular','.NET','IA & automatisation'];
+const el=document.getElementById('typed');
+if(!reduce){let w=0,c=words[0].length,del=true;
+  (function tick(){const word=words[w];
+    if(del){c--; if(c<=0){del=false;w=(w+1)%words.length;}}
+    else{c++; if(c>=words[w].length){del=true;el.textContent=words[w];return setTimeout(tick,1600);}}
+    el.textContent=words[w].slice(0,Math.max(c,0));
+    setTimeout(tick,del?45:85);})();
+  setTimeout(()=>{},0);}
+/* compteurs */
+const chips=[...document.querySelectorAll('.chips button')];
+document.getElementById('nTech').dataset.count=chips.length;
+document.querySelectorAll('[data-count]').forEach(b=>{const n=+b.dataset.count;
+  if(reduce){b.textContent=n;return}
+  const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1200);b.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0);});
+/* filtre par compétence */
+const cards=[...document.querySelectorAll('.proj')], box=document.getElementById('filter');
+function clear(){chips.forEach(c=>c.setAttribute('aria-pressed','false'));cards.forEach(c=>c.classList.remove('dim','hit'));box.hidden=true;}
+chips.forEach(ch=>ch.addEventListener('click',()=>{
+  if(ch.getAttribute('aria-pressed')==='true')return clear();
+  clear();ch.setAttribute('aria-pressed','true');const t=ch.textContent.trim();
+  const hits=cards.filter(c=>(c.dataset.tech||'').split('|').includes(t));
+  cards.forEach(c=>c.classList.add(hits.includes(c)?'hit':'dim'));
+  box.hidden=false;
+  box.innerHTML=hits.length?'<span><b>'+t+'</b> : utilisé dans '+hits.length+' projet'+(hits.length>1?'s':'')+'.</span> <a href="#experiences">Voir</a> <button type="button">Effacer</button>'
+    :'<span><b>'+t+'</b> : compétence pratiquée en cours et en projets personnels.</span> <button type="button">Effacer</button>';
+  box.querySelector('button').onclick=clear;
+}));
+/* cartes : lumière + lire plus */
+cards.forEach(c=>{
+  c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')});
+  const b=c.querySelector('.more'),p=c.querySelector('p');
+  requestAnimationFrame(()=>{if(p.scrollHeight<=p.clientHeight+2)b.hidden=true});
+  c.addEventListener('click',e=>{if(e.target.closest('a'))return;c.classList.toggle('open');b.textContent=c.classList.contains('open')?'Réduire':'Lire plus'});
+});
+/* nav active + progression + haut */
+const links=[...document.querySelectorAll('nav.top .links a')],prog=document.getElementById('prog'),top=document.getElementById('top');
+function onScroll(){const h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?scrollY/h*100:0)+'%';top.hidden=scrollY<500;
+  let cur='';document.querySelectorAll('section[id]').forEach(s=>{if(s.getBoundingClientRect().top<140)cur=s.id});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+top.onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+})();
+</script>
+
+</body>
+</html>
